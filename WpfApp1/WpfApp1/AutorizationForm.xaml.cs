@@ -24,7 +24,6 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
-       
         private void CB_Checked(object sender, RoutedEventArgs e)
         {
             PasswordUnmask.Visibility = Visibility.Visible;

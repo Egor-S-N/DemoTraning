@@ -1,0 +1,18 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+
+        <PasswordBox Name="PasswordHidden" PasswordChar="•" Margin="296,193,296,199"/>
+        <TextBox Name="PasswordUnmask" Visibility="Hidden"  Margin="296,193,296,199"/>
+        <CheckBox Name="CB" Content="Отобразить пароль" HorizontalAlignment="Left" Margin="536,142,0,0" VerticalAlignment="Top" Checked="CB_Checked" Unchecked="CB_Unchecked"/>
+        <Button Content="Войти" HorizontalAlignment="Left" Margin="350,276,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBox Name="LoginTextBox" HorizontalAlignment="Left" Height="20" Margin="296,137,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="200"/>
+
+    </Grid>
+</Window>
