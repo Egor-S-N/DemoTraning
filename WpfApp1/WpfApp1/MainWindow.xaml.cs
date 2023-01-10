@@ -24,5 +24,18 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+       
+        private void CB_Checked(object sender, RoutedEventArgs e)
+        {
+            PasswordUnmask.Visibility = Visibility.Visible;
+            PasswordHidden.Visibility = Visibility.Hidden;
+            PasswordUnmask.Text = PasswordHidden.Password;
+        }
+
+        private void CB_Unchecked(object sender, RoutedEventArgs e)
+        {
+            PasswordUnmask.Visibility = Visibility.Hidden;
+            PasswordHidden.Visibility = Visibility.Visible;
+        }
     }
 }

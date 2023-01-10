@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <PasswordBox Name="PasswordHidden" PasswordChar="•" Width="200" Height="20"/>
+        <TextBox Name="PasswordUnmask" Visibility="Hidden" Width="200" Height="20"/>
+        <CheckBox Name="CB" Content="CheckBox" HorizontalAlignment="Left" Margin="515,210,0,0" VerticalAlignment="Top" Checked="CB_Checked" Unchecked="CB_Unchecked"/>
+
     </Grid>
 </Window>
