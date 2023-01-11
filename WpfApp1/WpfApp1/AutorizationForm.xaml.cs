@@ -22,6 +22,7 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool FirstTryToEnter = true;
         public MainWindow()
         {
             InitializeComponent();
@@ -39,21 +40,44 @@ namespace WpfApp1
         }
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
-            if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
+            if (FirstTryToEnter)
             {
-                BarcodePage barcodePage = new BarcodePage();
-                barcodePage.Show();
-                MessageBox.Show("Test");
+                if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
+                {
+                    BarcodePage barcodePage = new BarcodePage();
+                    this.Close();
+                    barcodePage.Show();
+                }
+                else
+                {
+                    FirstTryToEnter = false;
+                    MessageBox.Show("Дурачок, неверный ты ");
+                    EnterButton.Margin = new Thickness(358, 353, 0, 0);
+                    MyCaptcha.Visibility = Visibility.Visible;
+                    CaptchaTextBox.Visibility = Visibility.Visible;
+                    ButtonAnotherCaptcha.Visibility = Visibility.Visible;
+                    MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                }
             }
             else
             {
-                MessageBox.Show("Дурачок, неверный ты ");
-                EnterButton.Margin = new Thickness(358, 353, 0, 0);
-                MyCaptcha.Visibility = Visibility.Visible;
-                CaptchaTextBox.Visibility = Visibility.Visible;
-                ButtonAnotherCaptcha.Visibility = Visibility.Visible;
-                MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin" && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
+                {
+                    BarcodePage barcodePage = new BarcodePage();
+                    this.Close();
+                    barcodePage.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Дурачок, неверный ты ");
+                    EnterButton.Margin = new Thickness(358, 353, 0, 0);
+                    MyCaptcha.Visibility = Visibility.Visible;
+                    CaptchaTextBox.Visibility = Visibility.Visible;
+                    ButtonAnotherCaptcha.Visibility = Visibility.Visible;
+                    MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                }
             }
+            
         }
         private void ButtonAnotherCaptcha_Click(object sender, RoutedEventArgs e)
         {
