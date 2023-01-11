@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EasyCaptcha.Wpf;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ using System.Windows.Shapes;
 
 namespace WpfApp1
 {
+
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -36,5 +38,22 @@ namespace WpfApp1
             PasswordUnmask.Visibility = Visibility.Hidden;
             PasswordHidden.Visibility = Visibility.Visible;
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
+            //{
+            //    BarcodePage barcodePage = new BarcodePage();
+            //    barcodePage.Show();
+            //    MessageBox.Show("Test");
+            //}
+            
+            var answer = MyCaptcha.CaptchaText;
+            Captcha a = new Captcha();
+            a.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 5);
+            MessageBox.Show(a.CaptchaText);
+        }
+       
     }
 }
+
