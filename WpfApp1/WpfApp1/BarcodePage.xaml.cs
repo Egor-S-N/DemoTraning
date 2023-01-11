@@ -1,5 +1,9 @@
-﻿using System;
+﻿using BarcodeLib;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +26,35 @@ namespace WpfApp1
         public BarcodePage()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+            Barcode barcode = new Barcode();
+            //var img = barcode.Encode(TYPE.MSI_2Mod10, "111111111111",  290, 120);
+
+            //SaveFileDialog SaveFileDialog = new SaveFileDialog();
+            //SaveFileDialog.ShowDialog();
+            //img.Save(SaveFileDialog.FileName);
+            barcode.IncludeLabel = true;
+            var img = barcode.Encode(TYPE.CODE128, "111111111111",  290, 120);
+            using (var ms = new MemoryStream())
+            {
+                img.Save(ms, ImageFormat.Bmp);
+                ms.Seek(0, SeekOrigin.Begin);
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.StreamSource = ms;
+                bitmapImage.EndInit();
+
+                Photo.Source = bitmapImage;
+            }
+            //SaveFileDialog SaveFileDialog = new SaveFileDialog();
+            //SaveFileDialog.ShowDialog();
+            //img.Save(SaveFileDialog.FileName);
         }
     }
 }
