@@ -32,28 +32,32 @@ namespace WpfApp1
             PasswordHidden.Visibility = Visibility.Hidden;
             PasswordUnmask.Text = PasswordHidden.Password;
         }
-
         private void CB_Unchecked(object sender, RoutedEventArgs e)
         {
             PasswordUnmask.Visibility = Visibility.Hidden;
             PasswordHidden.Visibility = Visibility.Visible;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
-            //if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
-            //{
-            //    BarcodePage barcodePage = new BarcodePage();
-            //    barcodePage.Show();
-            //    MessageBox.Show("Test");
-            //}
-            
-            var answer = MyCaptcha.CaptchaText;
-            Captcha a = new Captcha();
-            a.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 5);
-            MessageBox.Show(a.CaptchaText);
+            if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
+            {
+                BarcodePage barcodePage = new BarcodePage();
+                barcodePage.Show();
+                MessageBox.Show("Test");
+            }
+            else
+            {
+                MessageBox.Show("Дурачок, неверный ты ");
+                EnterButton.Margin = new Thickness(358, 353, 0, 0);
+                MyCaptcha.Visibility = Visibility.Visible;
+                CaptchaTextBox.Visibility = Visibility.Visible;
+                ButtonAnotherCaptcha.Visibility = Visibility.Visible;
+                MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+            }
         }
-       
+        private void ButtonAnotherCaptcha_Click(object sender, RoutedEventArgs e)
+        {
+            MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+        }
     }
 }
-
