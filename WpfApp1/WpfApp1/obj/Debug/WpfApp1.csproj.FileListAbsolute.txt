@@ -161,3 +161,8 @@ C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\System.T
 C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\System.Text.Json.xml
 C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\System.ValueTuple.xml
+C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\EntityFramework.dll
+C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\EntityFramework.xml
+C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\429191-18\Desktop\coding\DemoTraning\WpfApp1\WpfApp1\bin\Debug\ru\EntityFramework.resources.dll

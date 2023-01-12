@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp1.Models;
 
 namespace WpfApp1
 {
@@ -22,7 +23,9 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+        DataBase db = new DataBase();
         private bool FirstTryToEnter = true;
+        
         public MainWindow()
         {
             InitializeComponent();
@@ -42,22 +45,84 @@ namespace WpfApp1
         {
             if (FirstTryToEnter)
             {
-                if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
+
+                var admin = from admins in db.Administrator where admins.Login == LoginTextBox.Text && admins.Password == PasswordHidden.Password select admins;
+                if (admin.Count() < 1)
                 {
-                    BarcodePage barcodePage = new BarcodePage();
-                    this.Close();
-                    barcodePage.Show();
+                    var accountant = from accountants in db.Accountant where accountants.Login == LoginTextBox.Text && accountants.Password == PasswordHidden.Password select accountants;
+                    if (accountant.Count() < 1)
+                    {
+                        MessageBox.Show("Не нйадено");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Вы бухгалтер");
+                    }
                 }
                 else
                 {
-                    FirstTryToEnter = false;
-                    MessageBox.Show("Дурачок, неверный ты ");
-                    EnterButton.Margin = new Thickness(358, 353, 0, 0);
-                    MyCaptcha.Visibility = Visibility.Visible;
-                    CaptchaTextBox.Visibility = Visibility.Visible;
-                    ButtonAnotherCaptcha.Visibility = Visibility.Visible;
-                    MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                    MessageBox.Show("вы админ");
                 }
+                
+
+                //foreach(var i in db.Administrator)
+                //{
+                //    MessageBox.Show(i.Login);
+                //}
+
+                //if(admin.Count() != 1)
+                //{
+                //    var accountant = from accountants in db.Accountant where accountants.Login == LoginTextBox.Text && accountants.Password == PasswordUnmask.Text select accountants;
+                //    if (accountant.Count() < 1)
+                //    {
+                //       MessageBox.Show("Не найдено");
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("accountant");
+                //    }
+                //}
+                //else
+                //{
+                //    MessageBox.Show("admin");
+                //}
+
+                //dynamic user = from s in db.Administrator where s.Login == LoginTextBox.Text  && s.Password == PasswordUnmask.Text select s;
+
+                //if (user  == null)
+                //{
+                //    user = from s in db.Accountant where s.Login == LoginTextBox.Text && s.Password == PasswordUnmask.Text select s;
+                //    if(user == null)
+                //    {
+                //        MessageBox.Show("Не найдены");
+                //    }
+                //    else
+                //    {
+                //        MessageBox.Show("accountant");
+                //    }
+                //}
+                //else 
+                //{
+                //    MessageBox.Show("admin");
+                //}
+
+
+                //if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
+                //{
+                //    BarcodePage barcodePage = new BarcodePage();
+                //    this.Close();
+                //    barcodePage.Show();
+                //}
+                //else
+                //{
+                //    FirstTryToEnter = false;
+                //    MessageBox.Show("Дурачок, неверный ты ");
+                //    EnterButton.Margin = new Thickness(358, 353, 0, 0);
+                //    MyCaptcha.Visibility = Visibility.Visible;
+                //    CaptchaTextBox.Visibility = Visibility.Visible;
+                //    ButtonAnotherCaptcha.Visibility = Visibility.Visible;
+                //    MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                //}
             }
             else
             {
@@ -83,5 +148,7 @@ namespace WpfApp1
         {
             MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
         }
+
+
     }
 }
