@@ -141,6 +141,7 @@
     <Compile Include="Models\Accountant.cs" />
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\DataBase.cs" />
+    <Compile Include="Models\Global.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

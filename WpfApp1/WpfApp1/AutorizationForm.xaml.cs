@@ -49,98 +49,65 @@ namespace WpfApp1
                 var admin = from admins in db.Administrator where admins.Login == LoginTextBox.Text && admins.Password == PasswordHidden.Password select admins;
                 if (admin.Count() < 1)
                 {
+
                     var accountant = from accountants in db.Accountant where accountants.Login == LoginTextBox.Text && accountants.Password == PasswordHidden.Password select accountants;
                     if (accountant.Count() < 1)
                     {
-                        MessageBox.Show("Не нйадено");
+                        FirstTryToEnter = false;
+                        MessageBox.Show("Дурачок, неверный ты ");
+                        EnterButton.Margin = new Thickness(358, 353, 0, 0);
+                        MyCaptcha.Visibility = Visibility.Visible;
+                        CaptchaTextBox.Visibility = Visibility.Visible;
+                        ButtonAnotherCaptcha.Visibility = Visibility.Visible;
+                        MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
                     }
                     else
                     {
+                        Global.UserID = accountant.First().IdAccountant;
+                        Global.UserType = "Accountant";
+                        BarcodePage barcodePage = new BarcodePage();
+                        this.Close();
+                        barcodePage.Show();
                         MessageBox.Show("Вы бухгалтер");
                     }
                 }
                 else
                 {
+                    Global.UserID = admin.First().IdAdministrator;
+                    Global.UserType = "Admin";
+                    BarcodePage barcodePage = new BarcodePage();
+                    this.Close();
+                    barcodePage.Show();
                     MessageBox.Show("вы админ");
                 }
-                
-
-                //foreach(var i in db.Administrator)
-                //{
-                //    MessageBox.Show(i.Login);
-                //}
-
-                //if(admin.Count() != 1)
-                //{
-                //    var accountant = from accountants in db.Accountant where accountants.Login == LoginTextBox.Text && accountants.Password == PasswordUnmask.Text select accountants;
-                //    if (accountant.Count() < 1)
-                //    {
-                //       MessageBox.Show("Не найдено");
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("accountant");
-                //    }
-                //}
-                //else
-                //{
-                //    MessageBox.Show("admin");
-                //}
-
-                //dynamic user = from s in db.Administrator where s.Login == LoginTextBox.Text  && s.Password == PasswordUnmask.Text select s;
-
-                //if (user  == null)
-                //{
-                //    user = from s in db.Accountant where s.Login == LoginTextBox.Text && s.Password == PasswordUnmask.Text select s;
-                //    if(user == null)
-                //    {
-                //        MessageBox.Show("Не найдены");
-                //    }
-                //    else
-                //    {
-                //        MessageBox.Show("accountant");
-                //    }
-                //}
-                //else 
-                //{
-                //    MessageBox.Show("admin");
-                //}
-
-
-                //if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin")
-                //{
-                //    BarcodePage barcodePage = new BarcodePage();
-                //    this.Close();
-                //    barcodePage.Show();
-                //}
-                //else
-                //{
-                //    FirstTryToEnter = false;
-                //    MessageBox.Show("Дурачок, неверный ты ");
-                //    EnterButton.Margin = new Thickness(358, 353, 0, 0);
-                //    MyCaptcha.Visibility = Visibility.Visible;
-                //    CaptchaTextBox.Visibility = Visibility.Visible;
-                //    ButtonAnotherCaptcha.Visibility = Visibility.Visible;
-                //    MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
-                //}
             }
             else
             {
-                if (PasswordHidden.Password == "Admin" && LoginTextBox.Text == "Admin" && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
+                var admin = from admins in db.Administrator where admins.Login == LoginTextBox.Text && admins.Password == PasswordHidden.Password select admins;
+                var accountant = from accountants in db.Accountant where accountants.Login == LoginTextBox.Text && accountants.Password == PasswordHidden.Password select accountants;
+
+                if (admin.Count()> 0 && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
                 {
+                    Global.UserID = admin.First().IdAdministrator;
+                    Global.UserType = "Admin";
+                    BarcodePage barcodePage = new BarcodePage();
+                    this.Close();
+                    barcodePage.Show();
+                }
+                else if(accountant.Count() > 0 && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
+                {
+                    Global.UserID = accountant.First().IdAccountant;
+                    Global.UserType = "Accountant";
                     BarcodePage barcodePage = new BarcodePage();
                     this.Close();
                     barcodePage.Show();
                 }
                 else
                 {
-                    MessageBox.Show("Дурачок, неверный ты ");
-                    EnterButton.Margin = new Thickness(358, 353, 0, 0);
-                    MyCaptcha.Visibility = Visibility.Visible;
-                    CaptchaTextBox.Visibility = Visibility.Visible;
-                    ButtonAnotherCaptcha.Visibility = Visibility.Visible;
-                    MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                   MessageBox.Show("Не найдено");
+                   MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
                 }
+             
             }
             
         }
