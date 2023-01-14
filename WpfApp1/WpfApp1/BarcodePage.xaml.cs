@@ -28,6 +28,13 @@ namespace WpfApp1
         {
             InitializeComponent();
             UserType.Content = Global.UserType;
+
+            var bitmapImage = new BitmapImage();
+
+            bitmapImage.BeginInit();
+            bitmapImage.UriSource = new Uri($"C:\\Users\\429191-18\\Desktop\\coding\\DemoTraning\\WpfApp1\\WpfApp1\\Sources\\{Global.UserType}.jpeg");
+            bitmapImage.EndInit();
+            Photo.Source = bitmapImage;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -52,7 +59,7 @@ namespace WpfApp1
                 bitmapImage.StreamSource = ms;
                 bitmapImage.EndInit();
 
-                Photo.Source = bitmapImage;
+                BarcodePhoto.Source = bitmapImage;
             }
             //SaveFileDialog SaveFileDialog = new SaveFileDialog();
             //SaveFileDialog.ShowDialog();

@@ -168,9 +168,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Sources\Accountant.jpeg" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Sources\Admin.jpeg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
