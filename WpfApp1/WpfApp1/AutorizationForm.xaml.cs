@@ -23,12 +23,18 @@ namespace WpfApp1
     /// </summary>
     public partial class MainWindow : Window
     {
+
         DataBase db = new DataBase();
         private bool FirstTryToEnter = true;
+
+
         
+
         public MainWindow()
         {
+            Global.CurentPage = this;
             InitializeComponent();
+            
         }
         private void CB_Checked(object sender, RoutedEventArgs e)
         {
@@ -40,6 +46,7 @@ namespace WpfApp1
         {
             PasswordUnmask.Visibility = Visibility.Hidden;
             PasswordHidden.Visibility = Visibility.Visible;
+            PasswordHidden.Password =  PasswordUnmask.Text;
         }
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
@@ -66,7 +73,7 @@ namespace WpfApp1
                         Global.UserID = accountant.First().IdAccountant;
                         Global.UserType = "Accountant";
                         BarcodePage barcodePage = new BarcodePage();
-                        this.Close();
+                        this.Hide();
                         barcodePage.Show();
                         MessageBox.Show("Вы бухгалтер");
                     }
@@ -76,7 +83,7 @@ namespace WpfApp1
                     Global.UserID = admin.First().IdAdministrator;
                     Global.UserType = "Admin";
                     BarcodePage barcodePage = new BarcodePage();
-                    this.Close();
+                    this.Hide();
                     barcodePage.Show();
                     MessageBox.Show("вы админ");
                 }
@@ -91,7 +98,7 @@ namespace WpfApp1
                     Global.UserID = admin.First().IdAdministrator;
                     Global.UserType = "Admin";
                     BarcodePage barcodePage = new BarcodePage();
-                    this.Close();
+                    this.Hide();
                     barcodePage.Show();
                 }
                 else if(accountant.Count() > 0 && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
@@ -99,7 +106,7 @@ namespace WpfApp1
                     Global.UserID = accountant.First().IdAccountant;
                     Global.UserType = "Accountant";
                     BarcodePage barcodePage = new BarcodePage();
-                    this.Close();
+                    this.Hide();
                     barcodePage.Show();
                 }
                 else
