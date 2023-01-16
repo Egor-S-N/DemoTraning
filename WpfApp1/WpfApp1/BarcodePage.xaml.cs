@@ -26,7 +26,9 @@ namespace WpfApp1
     {
         public BarcodePage()
         {
+            Global.CurentPage = this;
             InitializeComponent();
+            Global.StartTimer();
             UserType.Content = Global.UserType;
 
             var bitmapImage = new BitmapImage();
