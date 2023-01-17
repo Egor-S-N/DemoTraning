@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище DemoModelContainer" CdmEntityContainer="DemoEntities">
+    <EntitySetMapping Name="Accountant">
+      <EntityTypeMapping TypeName="DemoModel.Accountant">
+        <MappingFragment StoreEntitySet="Accountant">
+          <ScalarProperty Name="IdAccountant" ColumnName="IdAccountant" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LastDateAndTimeOfEntry" ColumnName="LastDateAndTimeOfEntry" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Administrator">
+      <EntityTypeMapping TypeName="DemoModel.Administrator">
+        <MappingFragment StoreEntitySet="Administrator">
+          <ScalarProperty Name="IdAdministrator" ColumnName="IdAdministrator" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AnalyzerOperationOrder">
+      <EntityTypeMapping TypeName="DemoModel.AnalyzerOperationOrder">
+        <MappingFragment StoreEntitySet="AnalyzerOperationOrder">
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="IdAnalyzerOperation" ColumnName="IdAnalyzerOperation" />
+          <ScalarProperty Name="DateAndTimeOfReceipt" ColumnName="DateAndTimeOfReceipt" />
+          <ScalarProperty Name="DateAndTimeOfExecution" ColumnName="DateAndTimeOfExecution" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BarcodePatient">
+      <EntityTypeMapping TypeName="DemoModel.BarcodePatient">
+        <MappingFragment StoreEntitySet="BarcodePatient">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Bracode" ColumnName="Bracode" />
+          <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataOfLaboratoryAssistants">
+      <EntityTypeMapping TypeName="DemoModel.DataOfLaboratoryAssistants">
+        <MappingFragment StoreEntitySet="DataOfLaboratoryAssistants">
+          <ScalarProperty Name="IdAssistant" ColumnName="IdAssistant" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="LastDateAndTimeOfEntry" ColumnName="LastDateAndTimeOfEntry" />
+          <ScalarProperty Name="TypeAnalyzer" ColumnName="TypeAnalyzer" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DataOnAnalyzerOperation">
+      <EntityTypeMapping TypeName="DemoModel.DataOnAnalyzerOperation">
+        <MappingFragment StoreEntitySet="DataOnAnalyzerOperation">
+          <ScalarProperty Name="IdAnalyzerOperation" ColumnName="IdAnalyzerOperation" />
+          <ScalarProperty Name="NameAnalyzer" ColumnName="NameAnalyzer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsuranceCompany">
+      <EntityTypeMapping TypeName="DemoModel.InsuranceCompany">
+        <MappingFragment StoreEntitySet="InsuranceCompany">
+          <ScalarProperty Name="IdCompany" ColumnName="IdCompany" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="INN" ColumnName="INN" />
+          <ScalarProperty Name="PaymentAccount" ColumnName="PaymentAccount" />
+          <ScalarProperty Name="BIC" ColumnName="BIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LaboratoryServices">
+      <EntityTypeMapping TypeName="DemoModel.LaboratoryServices">
+        <MappingFragment StoreEntitySet="LaboratoryServices">
+          <ScalarProperty Name="IdService" ColumnName="IdService" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Deadline" ColumnName="Deadline" />
+          <ScalarProperty Name="MeanDeviation" ColumnName="MeanDeviation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="DemoModel.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
+          <ScalarProperty Name="DateOfCreation" ColumnName="DateOfCreation" />
+          <ScalarProperty Name="OrderStatus" ColumnName="OrderStatus" />
+          <ScalarProperty Name="ExecutionTime" ColumnName="ExecutionTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PatientData">
+      <EntityTypeMapping TypeName="DemoModel.PatientData">
+        <MappingFragment StoreEntitySet="PatientData">
+          <ScalarProperty Name="IdPatient" ColumnName="IdPatient" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Guid" ColumnName="Guid" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="InsurancePolicyNumber" ColumnName="InsurancePolicyNumber" />
+          <ScalarProperty Name="EIN" ColumnName="EIN" />
+          <ScalarProperty Name="TypeOfInsurancePolicy" ColumnName="TypeOfInsurancePolicy" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="PassportSeries" ColumnName="PassportSeries" />
+          <ScalarProperty Name="PassportNumber" ColumnName="PassportNumber" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="IdInsuranceCompany" ColumnName="IdInsuranceCompany" />
+          <ScalarProperty Name="IP" ColumnName="IP" />
+          <ScalarProperty Name="HistoryAddress" ColumnName="HistoryAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceRendered">
+      <EntityTypeMapping TypeName="DemoModel.ServiceRendered">
+        <MappingFragment StoreEntitySet="ServiceRendered">
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="IdService" ColumnName="IdService" />
+          <ScalarProperty Name="IdAnalyzerOperation" ColumnName="IdAnalyzerOperation" />
+          <ScalarProperty Name="IdAssistant" ColumnName="IdAssistant" />
+          <ScalarProperty Name="DateAndTimeOfCompletion" ColumnName="DateAndTimeOfCompletion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InsuranceCompanyAccounts">
+      <EntityTypeMapping TypeName="DemoModel.InsuranceCompanyAccounts">
+        <MappingFragment StoreEntitySet="InsuranceCompanyAccounts">
+          <ScalarProperty Name="IdAccountant" ColumnName="IdAccountant" />
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="IdInsuranceCompany" ColumnName="IdInsuranceCompany" />
+          <ScalarProperty Name="InvoiceIssued" ColumnName="InvoiceIssued" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderLaboratoryServices">
+      <EntityTypeMapping TypeName="DemoModel.OrderLaboratoryServices">
+        <MappingFragment StoreEntitySet="OrderLaboratoryServices">
+          <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+          <ScalarProperty Name="IdService" ColumnName="IdService" />
+          <ScalarProperty Name="ServiceStatus" ColumnName="ServiceStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LaboratoryAssistantsServices" TypeName="DemoModel.LaboratoryAssistantsServices" StoreEntitySet="LaboratoryAssistantsServices">
+      <EndProperty Name="DataOfLaboratoryAssistants">
+        <ScalarProperty Name="IdAssistant" ColumnName="IdAssistant" />
+      </EndProperty>
+      <EndProperty Name="LaboratoryServices">
+        <ScalarProperty Name="IdService" ColumnName="IdService" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

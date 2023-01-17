@@ -1,0 +1,1 @@
+<add name="DataBase" connectionString="data source=ADCLG1;initial catalog=DEMOOOOOOOOOOOOOOOOOOOOO;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient"/>

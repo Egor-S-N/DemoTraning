@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using WpfApp1.Models;
 
 namespace WpfApp1
@@ -24,17 +25,18 @@ namespace WpfApp1
     public partial class MainWindow : Window
     {
 
-        DataBase db = new DataBase();
+        Demo db = new Demo();
         private bool FirstTryToEnter = true;
+        DispatcherTimer waitingTimer = new DispatcherTimer();
 
 
-        
+
 
         public MainWindow()
         {
-            Global.CurentPage = this;
             InitializeComponent();
-            
+            Global.StartPage = this;
+
         }
         private void CB_Checked(object sender, RoutedEventArgs e)
         {
@@ -46,7 +48,7 @@ namespace WpfApp1
         {
             PasswordUnmask.Visibility = Visibility.Hidden;
             PasswordHidden.Visibility = Visibility.Visible;
-            PasswordHidden.Password =  PasswordUnmask.Text;
+            PasswordHidden.Password = PasswordUnmask.Text;
         }
         private void ButtonEnter_Click(object sender, RoutedEventArgs e)
         {
@@ -75,7 +77,6 @@ namespace WpfApp1
                         BarcodePage barcodePage = new BarcodePage();
                         this.Hide();
                         barcodePage.Show();
-                        MessageBox.Show("Вы бухгалтер");
                     }
                 }
                 else
@@ -85,7 +86,6 @@ namespace WpfApp1
                     BarcodePage barcodePage = new BarcodePage();
                     this.Hide();
                     barcodePage.Show();
-                    MessageBox.Show("вы админ");
                 }
             }
             else
@@ -93,7 +93,7 @@ namespace WpfApp1
                 var admin = from admins in db.Administrator where admins.Login == LoginTextBox.Text && admins.Password == PasswordHidden.Password select admins;
                 var accountant = from accountants in db.Accountant where accountants.Login == LoginTextBox.Text && accountants.Password == PasswordHidden.Password select accountants;
 
-                if (admin.Count()> 0 && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
+                if (admin.Count() > 0 && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
                 {
                     Global.UserID = admin.First().IdAdministrator;
                     Global.UserType = "Admin";
@@ -101,7 +101,7 @@ namespace WpfApp1
                     this.Hide();
                     barcodePage.Show();
                 }
-                else if(accountant.Count() > 0 && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
+                else if (accountant.Count() > 0 && MyCaptcha.CaptchaText == CaptchaTextBox.Text)
                 {
                     Global.UserID = accountant.First().IdAccountant;
                     Global.UserType = "Accountant";
@@ -111,12 +111,17 @@ namespace WpfApp1
                 }
                 else
                 {
-                   MessageBox.Show("Не найдено");
-                   MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                    MessageBox.Show("Неверный логин или пароль, повторите попытку через 10 секунд");
+
+                    waitingTimer.Tick += new EventHandler(waitingTimer_Tick);
+                    waitingTimer.Interval = new TimeSpan(0, 0, 10);
+                    EnterButton.IsEnabled = false;
+                    waitingTimer.Start();
+                    MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
                 }
-             
+
             }
-            
+
         }
         private void ButtonAnotherCaptcha_Click(object sender, RoutedEventArgs e)
         {
@@ -124,5 +129,11 @@ namespace WpfApp1
         }
 
 
+        private void waitingTimer_Tick(object sender, EventArgs e)
+        {
+            EnterButton.IsEnabled = true;
+            waitingTimer.Tick -= waitingTimer_Tick;
+            waitingTimer.Stop();
+        }
     }
 }

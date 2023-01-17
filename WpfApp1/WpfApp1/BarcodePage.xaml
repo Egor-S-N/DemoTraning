@@ -5,12 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="BarcodePage" Height="450" Width="800">
+        Title="BarcodePage" Height="450" Width="800" >
     <Grid>
         <Button Content="Button" HorizontalAlignment="Left" Margin="380,196,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
         <Image Name="BarcodePhoto" HorizontalAlignment="Left" Height="100" Margin="148,72,0,0" VerticalAlignment="Top" Width="176" />
         <Label Name="UserType" Content="Label" HorizontalAlignment="Left" Margin="169,110,0,0" VerticalAlignment="Top"/>
         <Image Name="Photo"  HorizontalAlignment="Left" Height="100" Margin="598,72,0,0" VerticalAlignment="Top" Width="100"/>
+        <Label Name="TimeLabel" HorizontalAlignment="Left" Margin="672,370,0,10" Width="78" Background="Aqua"/>
+        <Button Name="ExitButton" Content="Выйти" HorizontalAlignment="Left" Margin="93,355,0,0" VerticalAlignment="Top" Click="ExitButton_Click"/>
 
     </Grid>
 </Window>

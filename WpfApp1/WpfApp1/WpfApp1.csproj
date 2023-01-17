@@ -8,12 +8,13 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>WpfApp1</RootNamespace>
     <AssemblyName>WpfApp1</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -140,8 +141,19 @@
     </Compile>
     <Compile Include="Models\Accountant.cs" />
     <Compile Include="Models\Administrator.cs" />
-    <Compile Include="Models\DataBase.cs" />
+    <Compile Include="Models\AnalyzerOperationOrder.cs" />
+    <Compile Include="Models\BarcodePatient.cs" />
+    <Compile Include="Models\DataOfLaboratoryAssistants.cs" />
+    <Compile Include="Models\DataOnAnalyzerOperation.cs" />
+    <Compile Include="Models\Demo.cs" />
     <Compile Include="Models\Global.cs" />
+    <Compile Include="Models\InsuranceCompany.cs" />
+    <Compile Include="Models\InsuranceCompanyAccounts.cs" />
+    <Compile Include="Models\LaboratoryServices.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderLaboratoryServices.cs" />
+    <Compile Include="Models\PatientData.cs" />
+    <Compile Include="Models\ServiceRendered.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -176,6 +188,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Sources\Admin.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
