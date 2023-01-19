@@ -17,7 +17,7 @@ namespace WpfApp1.Models
         public static Label TimeLabel;
         private static DispatcherTimer dispatcherTimer = new DispatcherTimer();
         
-        private static int time = 10; // 2ч:30мин = 150мин = 9000 с     15мин = 900с
+        private static int time = 9000; // 2ч:30мин = 150мин = 9000 с     15мин = 900с
         public static Window CurentPage;
         public static Window StartPage;
 
@@ -29,6 +29,8 @@ namespace WpfApp1.Models
             dispatcherTimer.Interval = new TimeSpan(0, 0, 1);
             dispatcherTimer.Start();
             CurentPage.Closed += Window_Closed;
+
+            
         }
 
         private static void dispatcherTimer_Tick(object sender, EventArgs e)

@@ -62,21 +62,35 @@ namespace WpfApp1
                     var accountant = from accountants in db.Accountant where accountants.Login == LoginTextBox.Text && accountants.Password == PasswordHidden.Password select accountants;
                     if (accountant.Count() < 1)
                     {
-                        FirstTryToEnter = false;
-                        MessageBox.Show("Дурачок, неверный ты ");
-                        EnterButton.Margin = new Thickness(358, 353, 0, 0);
-                        MyCaptcha.Visibility = Visibility.Visible;
-                        CaptchaTextBox.Visibility = Visibility.Visible;
-                        ButtonAnotherCaptcha.Visibility = Visibility.Visible;
-                        MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+
+                        var laborant = from laborants in db.DataOfLaboratoryAssistants where laborants.Login == LoginTextBox.Text && laborants.Password == PasswordHidden.Password select laborants;
+                        if (laborant.Count() >0)
+                        {
+                            Global.UserID = laborant.First().IdAssistant;
+                            Global.UserType = "Laborant";
+                            AnalizatorPage analizator = new AnalizatorPage();
+                            this.Hide();
+                            analizator.Show();
+                        }
+                        else
+                        {
+                            FirstTryToEnter = false;
+                            MessageBox.Show("Дурачок, неверный ты ");
+                            EnterButton.Margin = new Thickness(358, 353, 0, 0);
+                            MyCaptcha.Visibility = Visibility.Visible;
+                            CaptchaTextBox.Visibility = Visibility.Visible;
+                            ButtonAnotherCaptcha.Visibility = Visibility.Visible;
+                            MyCaptcha.CreateCaptcha(Captcha.LetterOption.Alphanumeric, 4);
+                        }
+
                     }
                     else
                     {
                         Global.UserID = accountant.First().IdAccountant;
                         Global.UserType = "Accountant";
-                        BarcodePage barcodePage = new BarcodePage();
+                        Patients patientsView = new Patients();
                         this.Hide();
-                        barcodePage.Show();
+                        patientsView.Show();
                     }
                 }
                 else

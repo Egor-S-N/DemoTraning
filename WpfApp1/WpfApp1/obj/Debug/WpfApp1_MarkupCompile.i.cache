@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\App.xaml
-2-263358184
+51091922803
 
-22-462183576
+25-2134051751
 38289708048
-AutorizationForm.xaml;BarcodePage.xaml;
+AnalizatorPage.xaml;AutorizationForm.xaml;BarcodePage.xaml;Patients.xaml;PatientsView.xaml;
 
-False
+True
 

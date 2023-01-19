@@ -224,3 +224,9 @@ D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileI
 D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CopyComplete
 D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
 D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
+D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\PatientsView.g.cs
+D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\PatientsView.baml
+D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\AnalizatorPage.g.cs
+D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\AnalizatorPage.baml
+D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\Patients.g.cs
+D:\VS_PROJECTS\DemoTraning\WpfApp1\WpfApp1\obj\Debug\Patients.baml

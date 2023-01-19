@@ -16,6 +16,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WpfApp1.Models;
+using System.Diagnostics;
+using System.Drawing.Printing;
 
 namespace WpfApp1
 {
@@ -42,26 +44,38 @@ namespace WpfApp1
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            Barcode barcode = new Barcode();
-            barcode.IncludeLabel = true;
-            var img = barcode.Encode(TYPE.CODE128, "111111111111",  290, 120);
-            using (var ms = new MemoryStream())
+            //Barcode barcode = new Barcode();
+            //barcode.IncludeLabel = true;
+
+            //var img = barcode.Encode(TYPE.CODE128, "111111111111", 290, 120);
+            //using (var ms = new MemoryStream())
+            //{
+            //    img.Save(ms, ImageFormat.Bmp);
+            //    ms.Seek(0, SeekOrigin.Begin);
+
+            //    var bitmapImage = new BitmapImage();
+            //    bitmapImage.BeginInit();
+            //    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+            //    bitmapImage.StreamSource = ms;
+            //    bitmapImage.EndInit();
+
+            //    BarcodePhoto.Source = bitmapImage;
+            //}
+
+            PrintDialog dlg = new PrintDialog();
+
+            if (dlg.ShowDialog() == true)
+
             {
-                img.Save(ms, ImageFormat.Bmp);
-                ms.Seek(0, SeekOrigin.Begin);
 
-                var bitmapImage = new BitmapImage();
-                bitmapImage.BeginInit();
-                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
-                bitmapImage.StreamSource = ms;
-                bitmapImage.EndInit();
-
-                BarcodePhoto.Source = bitmapImage;
             }
 
 
 
-        }
+
+
+
+            }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {
